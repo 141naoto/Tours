@@ -1,0 +1,2 @@
+class WentsController < ApplicationController
+end

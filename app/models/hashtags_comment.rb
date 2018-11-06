@@ -1,0 +1,2 @@
+class HashtagsComment < ApplicationRecord
+end
