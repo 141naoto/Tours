@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :places, only:[:show] do
-      resource :goes, only:[:create, :destroy]
+      resource :goes, only:[:create, :destroy, :show]
     		resources :comments, only:[:new, :show, :create, :destroy] do
     			resource :likes, only:[:create, :destroy]
       end
@@ -36,5 +36,7 @@ Rails.application.routes.draw do
   end
 
   post '/went_prefecture' => 'wents#went_prefecture'
+
+  get "/search/places" => "places#search"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
