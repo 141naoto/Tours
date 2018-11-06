@@ -12,17 +12,27 @@ Rails.application.routes.draw do
 
   root to:'top#top'
 
-  resources :users, only:[:index, :show, :edit, :updae, :destroy]
+  namespace :admin do
+    resources :users, only:[:index, :show, :edit, :updae, :destroy]
+  end
+  scope module: :public do
+    resources :users, only:[:show, :edit, :update, :destroy]
+  end
 
-  resources :regions, only:[:show] do
-  	resources :prefectures, only:[:show] do
-  		resources :places do
-  			resource :goes, only:[:create, :destroy]
-  			resources :comments, only:[:new, :show, :create, :destroy] do
-  				resource :likes, only:[:create, :destroy]
-  			end
-  		end
-  	end
+  resources :regions, only:[:show]
+
+  resources :prefectures, only:[:show]
+
+  namespace :admin do
+    resources :places
+  end
+  scope module: :public do
+    resources :places, only:[:show] do
+      resource :goes, only:[:create, :destroy]
+    		resources :comments, only:[:new, :show, :create, :destroy] do
+    			resource :likes, only:[:create, :destroy]
+      end
+    end
   end
 
   post '/went_prefecture' => 'wents#went_prefecture'
