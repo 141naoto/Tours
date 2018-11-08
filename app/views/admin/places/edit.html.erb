@@ -1,0 +1,36 @@
+<h2>編集</h2>
+<%= link_to "観光地一覧", admin_places_path %>
+
+<%= form_for(@place, url: admin_places_path) do |f| %>
+
+    <div class="field">
+    	<p>県名</p>
+       <%= f.select :prefecture_id, Prefecture.all.map{|u| [u.prefecture, u.id]}, include_blank: true %>
+   </div>
+	<div class="field">
+		<label>地名</label>
+		<%= f.text_field :place_name %>
+	</div>
+	<div class="field">
+        <label>画像</label>
+		<%= f.attachment_field :place_image %>
+	</div>
+	<div class="field">
+        <label>営業時間</label>
+		<%= f.text_area :hours %>
+	</div>
+    <div class="field">
+		<label>紹介</label>
+		<%= f.text_area :place_introduction %>
+	</div>
+	<div class="field">
+		<label>住所</label>
+		<%= f.text_area :address %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit '追加' %>
+	</div>
+
+	<%= link_to"詳細", admin_place_path(@place) %>
+<% end %>

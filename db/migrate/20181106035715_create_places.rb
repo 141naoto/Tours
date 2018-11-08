@@ -9,8 +9,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.string :hours
       t.string :address
       t.float :latitude
-      t.float :longtitude
-
+      t.float :longitude
       t.timestamps
     end
   end

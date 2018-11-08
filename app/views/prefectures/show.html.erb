@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="row">
+		 <h2><%= @prefecture.prefecture %></h2>
+		 <% @prefecture.places.each do |place| %>
+		 <%= link_to place_path(place.id) do %>
+		  <%= place.place_name %>
+		  <%= attachment_image_tag place, :place_image, :fill, 60, 60, format: "jpg", fallback:"no_image.jpg" %>
+		  <% end %>
+		<% end %>
+	</div>
+</div>

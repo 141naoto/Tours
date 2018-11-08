@@ -6,8 +6,7 @@ class CreateWentPrefectures < ActiveRecord::Migration[5.2]
       t.integer :prefecture_id
       t.string :address
       t.float :latitude
-      t.float :longtitude
-
+      t.float :longitude
       t.timestamps
     end
   end

@@ -37,6 +37,10 @@ Rails.application.routes.draw do
 
   post '/went_prefecture' => 'wents#went_prefecture'
 
-  get "/search/places" => "places#search"
+  get "/search_index/places" => "top#search_index"
+
+  get "/search" => "top#search"
+
+  get "/goes" => "public/goes#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

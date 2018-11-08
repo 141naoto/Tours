@@ -1,0 +1,56 @@
+	<div class="body">
+	 <div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+
+	          <p>
+				<strong>名前:</strong>
+				<%= @place.place_name %>
+			  </p>
+			  <div class="row">
+	            	
+	              		<%= attachment_image_tag @place, :place_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
+	              	
+	           </div>
+	         <div class="container">
+	             <div class="row">
+	          <p>
+	           <strong>営業時間:</strong>
+	           <%= @place.hours %>
+	          </p>
+	          <p>
+	           <strong>紹介:</strong>
+	           <%= @place.place_introduction %>
+	          </p>
+	          <p>
+	          <% if current_user %>
+	          <% if @place.favorited_by?(current_user) %>
+              <%= link_to place_goes_path(@place), method: :delete, class: "glyphicon btn btn-danger" do %>
+              <span class="glyphicon-star"></span>
+              <% end %>
+              <% else %>
+              <%= link_to place_goes_path(@place), method: :post, class: "glyphicon btn btn-default" do %>
+              <span class="glyphicon-star-empty"></span>
+              <% end %>
+              <% end %>
+              <% end %>
+        </p>
+	          <p>
+	           <strong>住所:</strong>
+	           <%= @place.address %>
+	          </p>
+	      </div>
+	  </div>
+	          <div id="map" style="width: 500px; height: 300px;"></div>
+	           <script>
+	             handler = Gmaps.build('Google');
+	             handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+					 markers = handler.addMarkers(<%= raw @hash.to_json %>);
+					 handler.bounds.extendWith(markers);
+					 handler.fitMapToBounds();
+	             });
+	           </script>
+		       </div>
+		   </div>
+		</div>
+	</div>

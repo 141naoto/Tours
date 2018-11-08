@@ -1,0 +1,41 @@
+	<div class="body">
+	 <div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+	          <p id="notice"><%= notice %></p>
+	          <p>
+				<strong>名前:</strong>
+				<%= @place.place_name %>
+			  </p>
+	          <div class="row">
+	            <div class="col-md-6 col-md-offset-3">
+	             <p>
+	              <%= attachment_image_tag @place, :place_image, :fill, 200, 250, format: "jpg", fallback:"no_image.jpg" %>
+	             </p>
+	            </div>
+	          </div>
+	          <p>
+	           <strong>営業時間:</strong>
+	           <%= @place.hours %>
+	          </p>
+	          <p>
+	           <strong>紹介:</strong>
+	           <%= @place.place_introduction %>
+	          </p>
+	          <p>
+	           <strong>住所:</strong>
+	           <%= @place.address %>
+	          </p>
+	          <div id="map" style="width: 800px; height: 400px;"></div>
+	           <script>
+	             handler = Gmaps.build('Google');
+	             handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+					 markers = handler.addMarkers(<%= raw @hash.to_json %>);
+					 handler.bounds.extendWith(markers);
+					 handler.fitMapToBounds();
+	             });
+	           </script>
+		       </div>
+		   </div>
+		</div>
+	</div>

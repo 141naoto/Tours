@@ -1,0 +1,23 @@
+<div>
+	<%= form_tag search_index_places_path, :method => 'get' do %>
+	<%= text_field_tag :search %>
+	<%= submit_tag "検索", :title => nil %>
+	<% end %>
+</div>
+
+<div>
+	<% @region.each do |region| %>
+	  <%= link_to region_path(region.id) do %>
+	  <ul>
+	 	<li><h1><%= region.region_name %></h1></li>
+	 </ul>
+	  <% end %>
+	    <% region.prefectures.each do |prefecture| %>
+	    	<%= link_to prefecture_path(prefecture.id) do %>
+	    		<ul>
+	    			<li><h3><%= prefecture.prefecture %></h3></li>
+	    		</ul>
+	    	<% end %>
+	    <% end %>
+	<% end %>
+</div>

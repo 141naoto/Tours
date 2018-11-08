@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<h2>Top</h2>
+<div class="container">
+	<div class="row">
+		<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="thumbnail">
+					<% @places.each do |place| %>
+						<%= link_to place_path (place.id) do %>
+					      <%= attachment_image_tag place, :place_image %>
+					    <% end %>
+					    <%= place.place_name %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
