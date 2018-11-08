@@ -2,7 +2,7 @@
 	 <div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-	          <p id="notice"><%= notice %></p>
+				<%= link_to"編集", edit_admin_place_path(@place), class:"btn btn-danger" %>
 	          <p>
 				<strong>名前:</strong>
 				<%= @place.place_name %>
@@ -14,6 +14,10 @@
 	             </p>
 	            </div>
 	          </div>
+	          <p>
+	          	<strong>閲覧数:</strong>
+	          	<%= @place.show_count %>
+	          </p>
 	          <p>
 	           <strong>営業時間:</strong>
 	           <%= @place.hours %>

@@ -7,4 +7,5 @@ class User < ApplicationRecord
   attachment :profile_image
 
   has_many :gos, dependent: :destroy
-end
+  has_many :comments, dependent: :destroy
+endhas_many :wents
