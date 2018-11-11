@@ -8,4 +8,13 @@ class User < ApplicationRecord
 
   has_many :gos, dependent: :destroy
   has_many :comments, dependent: :destroy
-endhas_many :wents
+  has_one :went, dependent: :destroy
+
+  after_create:create_went
+
+ private
+  def create_went
+  	went = Went.new(user_id: self.id, prefecture_count:0)
+    went.save
+  end
+end

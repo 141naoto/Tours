@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="row">
+	              <%= attachment_image_tag @comment, :comment_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
+	        </div>
+
+	        <p>
+	        	<%= @comment.title %>
+	        </p>
+	        <p>
+	        	<%= @comment.text %>
+	        </p>
+	        <p>
+		        <strong>季節:</strong>
+		        <%= @comment.season.season %>
+	        </p>
+	        <p>
+	        	<strong>人数</strong>
+	        	<%= @comment.organization.organization %>
+	        </p>
+	    </div>
+	</div>
+</div>

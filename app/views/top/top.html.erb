@@ -1,20 +1,46 @@
 <p id="notice"><%= notice %></p>
-<h2>Top</h2>
-<div class="container">
-	<div class="row">
-		<div class="container">
+	<div class="container">
 		<div class="row">
-			<div class="col-xs-3">
-				<div class="thumbnail">
-					<% @places.each do |place| %>
-						<%= link_to place_path (place.id) do %>
-					      <%= attachment_image_tag place, :place_image %>
-					    <% end %>
-					    <%= place.place_name %>
-					<% end %>
-				</div>
+				<h3>おすすめ</h3>
+					<div class="row">
+						<% @places.each do |place| %>
+							<div class="col-xs-4">
+								<div class="thumbnail">
+									<%= link_to place_show_count_path(place), method: :patch do %>
+										<%= attachment_image_tag place, :place_image %>
+									<% end %>
+									<%= place.place_name %>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<h3>閲覧数</h3>
+					<div class="row">
+						<% @show_ranking.each do |show| %>
+						<div class="col-xs-4">
+								<div class="thumbnail">
+									<%= link_to place_show_count_path(show), method: :patch do %>
+										<%= attachment_image_tag show, :place_image %>
+									<% end %>
+									<%= show.place_name %>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				<h3>新着コメント</h3>
+					<div class="row">
+						<% @comments.each do|comment| %>
+							<div class="col-xs-4">
+								<div class="thumbnail">
+									<%= link_to place_comment_path(@places, comment) do %>
+										<%= attachment_image_tag comment, :comment_image %>
+									<% end %>
+									<%= comment.title %>
+								</div>
+							</div>
+						<% end %>
+
+					</div>
 			</div>
 		</div>
 	</div>
-</div>
-</div>

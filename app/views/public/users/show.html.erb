@@ -16,12 +16,24 @@
 </tr>
 </tbody>
 </table>
-
 <div class="row">
    <% if @user.id == current_user.id %>
-     <%= link_to "編集", edit_user_path(@user), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
-     <% else %>
-     <%= link_to"あ", user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+     <%= link_to "編集", edit_user_path(@user), class:" btn btn-default glyphicon glyphicon-wrench" %>
    <% end %>
 </div>
+
+<h3>都道府県の数<%= @went.prefecture_count %>/47</h3>
+
+<% @went_places.each do |place| %>
+  <div class="col-xs-4">
+        <div class="thumbnail">
+            <%= link_to place_path(place) do %>
+                <%= attachment_image_tag place, :place_image %>
+              <% end %>
+              <%= place.place_name %>
+              </div>
+      </div>
+          <% end %>
+
+
 </div>

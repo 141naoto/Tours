@@ -1,11 +1,14 @@
 class TopController < ApplicationController
 	def top
-		@places = Place.all
+		@places = Place.all.limit(3)
+		@show_ranking = Place.all.order(show_count: "DESC").limit(3)
+		@comments = Comment.all.limit(3)
 	end
 
 	def search
-		@region = Region.all
-		@prefecture = Prefecture.all
+		@regions = Region.all
+		@prefectures = Prefecture.all
+		@comments = Comment.all
 	end
 
 	def search_index

@@ -7,7 +7,6 @@ class Place < ApplicationRecord
 	belongs_to :prefecture
 	has_many :gos, dependent: :destroy
 	has_many :comments, dependent: :destroy
-	has_many :wents
 	has_many :went_prefectures
 
 	def self.search(search)
@@ -21,4 +20,6 @@ class Place < ApplicationRecord
 	def favorited_by?(user)
           gos.where(user_id: user.id).exists?
     end
+
+    
 end
