@@ -1,3 +1,4 @@
+<div class="body">
 <p id="notice"><%= notice %></p>
 	<div class="container">
 		<div class="row">
@@ -39,8 +40,10 @@
 								</div>
 							</div>
 						<% end %>
-
 					</div>
+			</div>
+			<div class="rondom">
+				<%= link_to "どっかに行く", place_path(@random_place), class:"btn btn-danger" %>
 			</div>
 		</div>
 	</div>
