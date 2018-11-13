@@ -2,18 +2,31 @@
 <p id="notice"><%= notice %></p>
 	<div class="container">
 		<div class="row">
+			<script>
+			$(document).ready(function(){
+  $('.bxslider').bxSlider({
+    auto: true,           // 自動スライド
+    speed: 1000,          // スライドするスピード
+    moveSlides: 1,        // 移動するスライド数
+    pause: 3000,          // 自動スライドの待ち時間
+    maxSlides: 2,         // 一度に表示させる最大数
+    slideWidth: 400,      // 各スライドの幅
+	randomStart: true,    // 最初に表示するスライドをランダムに設定
+    autoHover: true       // ホバー時に自動スライドを停止
+  });
+});
+</script>
 				<h3>おすすめ</h3>
 					<div class="row">
-						<% @places.each do |place| %>
-							<div class="col-xs-4">
-								<div class="thumbnail">
-									<%= link_to place_show_count_path(place), method: :patch do %>
-										<%= attachment_image_tag place, :place_image %>
-									<% end %>
-									<%= place.place_name %>
-								</div>
-							</div>
-						<% end %>
+								<ul class="bxslider">
+									<% @places.each do |place| %>
+										<li><%= link_to place_show_count_path(place), method: :patch do %>
+											<%= attachment_image_tag place, :place_image, :fill, 400, 350, format:"jpg" %>
+									    	<% end %>
+									    	<h4><%= place.place_name %></h4>
+										</li>
+								    <% end %>
+								</ul>
 					</div>
 					<h3>閲覧数</h3>
 					<div class="row">
@@ -21,7 +34,7 @@
 						<div class="col-xs-4">
 								<div class="thumbnail">
 									<%= link_to place_show_count_path(show), method: :patch do %>
-										<%= attachment_image_tag show, :place_image %>
+										<%= attachment_image_tag show, :place_image, :fill, 300, 200, format:"jpg" %>
 									<% end %>
 									<%= show.place_name %>
 								</div>
@@ -34,7 +47,7 @@
 							<div class="col-xs-4">
 								<div class="thumbnail">
 									<%= link_to place_comment_path(@places, comment) do %>
-										<%= attachment_image_tag comment, :comment_image %>
+										<%= attachment_image_tag comment, :comment_image, :fill, 300, 200, format:"jpg" %>
 									<% end %>
 									<%= comment.title %>
 								</div>
@@ -42,7 +55,7 @@
 						<% end %>
 					</div>
 			</div>
-			<div class="rondom">
+			<div class="random">
 				<%= link_to "どっかに行く", place_path(@random_place), class:"btn btn-danger" %>
 			</div>
 		</div>

@@ -1,9 +1,10 @@
 class Public::WentPrefecturesController < Public::ApplicationController
 	def create
-		@place = Place.find(params[:place_id])
-		went = Went.where(user_id: current_user.id).last
-		went_place = @place.went_prefectures.where(went_id: went.id)
-		went_prefecture = WentPrefecture.where(went_id: went.id, prefecture_id: @place.prefecture_id)
+			@place = Place.find(params[:place_id])
+			went = Went.where(user_id: current_user.id).last
+			went_place = @place.went_prefectures.where(went_id: went.id)
+			went_prefecture = WentPrefecture.where(went_id: went.id, prefecture_id: @place.prefecture_id)
+			
 		if went_prefecture.empty?
 			went.update(prefecture_count: went.prefecture_count + 1)
 			went_prefecture = WentPrefecture.new
