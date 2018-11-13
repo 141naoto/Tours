@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
 	def new
 		@comment = Comment.new
+		@comment.comment_images.build
 		@season = Season.all
 		@organization = Organization.all
 	end
@@ -22,6 +23,6 @@ class Public::CommentsController < ApplicationController
 
   private
 	def comment_params
-		params.require(:comment).permit(:user_id, :place_id, :season_id, :organization_id, :text, :title, :comment_image)
+		params.require(:comment).permit(:user_id, :place_id, :season_id, :organization_id, :text, :title, comment_images_images: [])
 	end
 end

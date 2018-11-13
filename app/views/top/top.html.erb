@@ -41,19 +41,7 @@
 							</div>
 						<% end %>
 					</div>
-				<h3>新着コメント</h3>
-					<div class="row">
-						<% @comments.each do|comment| %>
-							<div class="col-xs-4">
-								<div class="thumbnail">
-									<%= link_to place_comment_path(@places, comment) do %>
-										<%= attachment_image_tag comment, :comment_image, :fill, 300, 200, format:"jpg" %>
-									<% end %>
-									<%= comment.title %>
-								</div>
-							</div>
-						<% end %>
-					</div>
+
 			</div>
 			<div class="random">
 				<%= link_to "どっかに行く", place_path(@random_place), class:"btn btn-danger" %>

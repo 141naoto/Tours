@@ -1,0 +1,37 @@
+<div class="body">
+<div class="container">
+	<div class="row">
+		<%= form_for(comment, url: place_comments_path) do |f| %>
+        <p>
+		<span>タイトル</span>
+		<%= f.text_field :title %>
+	    </p>
+	    <p>
+	    	<span>画像</span>
+	    	<%= f.attachment_field :comment_images_images, multiple: true %>
+	    </p>
+	    <p>
+	    	<span>季節</span>
+	    	<% season.each do |season| %>
+	    	<%= radio_button 'comment','season_id', season.id, {include_hidden: false} %>
+	    	<%= season.season %>
+	    	<% end %>
+	    </p>
+	    <p>
+	    	<span>人数</span>
+	    	<% organization.each do |organization| %>
+	    	<%= radio_button 'comment','organization_id', organization.id %>
+           <%= organization.organization %>
+	    	<% end %>
+	    </p>
+
+	    <p>
+	    	<span>コメント</span>
+	    	<%= f.text_area :text %>
+	    </p>
+
+	    <%= f.submit 'コメントを投稿' %>
+	    <% end %>
+	</div>
+</div>
+</div>

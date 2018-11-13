@@ -7,7 +7,6 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.integer :organization_id
       t.string :text
       t.string :title
-      t.string :comment_image_id
 
       t.timestamps
     end
