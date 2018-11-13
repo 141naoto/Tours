@@ -1,66 +1,7 @@
-<div class="body">
-<div>
-	<%= form_tag search_index_places_path, :method => 'get' do %>
-	<%= text_field_tag :search %>
-	<%= submit_tag "検索", :title => nil %>
-	<% end %>
-</div>
-
-<script type="text/javascript" src="javascripts/jquery.japan-map.min.js"></script>
+<script type="text/javascript" src="app/javascripts/jquery.japan-map.min.js"></script>
 
 <script type="text/javascript">
-	$(function(){
-			    var areaLinks = {
-    	1: '/prefectures/1',
-    	2: '/prefectures/2',
-    	3: '/prefectures/3',
-    	4: '/prefectures/4',
-    	5: '/prefectures/5',
-    	6: '/prefectures/6',
-    	7: '/prefectures/7',
-    	8: '/prefectures/12',
-    	9: '/prefectures/9',
-    	10: '/prefectures/10',
-    	11: '/prefectures/11',
-    	12: '/prefectures/13',
-    	13: '/prefectures/8',
-    	14: '/prefectures/14',
-    	15: '/prefectures/17',
-    	16: '/prefectures/18',
-    	17: '/prefectures/19',
-    	18: '/prefectures/20',
-    	19: '/prefectures/16',
-    	20: '/prefectures/15',
-    	21: '/prefectures/22',
-    	22: '/prefectures/21',
-    	23: '/prefectures/24',
-    	24: '/prefectures/23',
-    	25: '/prefectures/29',
-    	26: '/prefectures/25',
-    	27: '/prefectures/26',
-    	28: '/prefectures/27',
-    	29: '/prefectures/28',
-    	30: '/prefectures/30',
-    	31: '/prefectures/31',
-    	32: '/prefectures/32',
-    	33: '/prefectures/33',
-    	34: '/prefectures/34',
-    	35: '/prefectures/35',
-    	36: '/prefectures/38',
-    	37: '/prefectures/36',
-    	38: '/prefectures/37',
-    	39: '/prefectures/39',
-    	40: '/prefectures/40',
-    	41: '/prefectures/41',
-    	42: '/prefectures/42',
-    	43: '/prefectures/43',
-    	44: '/prefectures/44',
-    	45: '/prefectures/45',
-    	46: '/prefectures/46',
-    	47: '/prefectures/47',
-    };
-
-
+$(function(){
     var areas = [
 {code : 1, name: "北海道", color: "#7f7eda", hoverColor: "#b3b2ee", prefectures: [1]},
 {code : 2, name: "青森", color: "#759ef4", hoverColor: "#98b9ff", prefectures: [2]},
@@ -126,13 +67,10 @@
         movesIslands : true,
         fontSize : 11,
         fontShadowColor : "#fff",
-        onSelect:function(data){
-            location.href = areaLinks[data.area.code];
+        onSelect : function(data){
+            alert(data.name);
         }
     });
 });
 
 </script>
-
-<div id="map-container"></div>
-</div>
