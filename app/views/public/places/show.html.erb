@@ -1,10 +1,15 @@
 	<div class="body">
 	 <div class="container">
 		<div class="row">
+				<% if user_signed_in? %>
 			<div class="col-md-8 col-md-offset-2">
-
+				<% if user_signed_in? %>
 				<%= link_to "口コミ投稿", new_place_comment_path(@place) %>
 				<%= link_to "行った", place_went_prefectures_path(@place), method: :post %>
+				<% else %>
+				<%= link_to "口コミ投稿", new_user_session_path %>
+				<%= link_to "行った", new_user_session_path %>
+				<% end %>
 
 	          <p>
 				<strong>名前:</strong>
