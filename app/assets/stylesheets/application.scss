@@ -31,10 +31,14 @@
 	clear: both;
 }
 
- .show-image{
-    width:100px;
-	height:100px;
-	margin:10px;
+ .header_logo{
+   font-size: 50px;
+   color: black;
+ }
+
+ .a{
+   	margin: auto;
+	text-align: center;
  }
 
  .body{
@@ -55,3 +59,44 @@ footer{
 	margin: auto;
 }
 
+.sign{
+	background-color: white;
+	width: 40%;
+	margin: auto;
+	margin-top: 60px;
+	text-align: center;
+}
+
+.registration_path{
+	background-color: orange;
+	color: black;
+	font-size: 40px;
+}
+
+.registration_submit{
+	background-color: orange;
+	color: black;
+	font-size: 30px;
+	margin-top: 15px;
+}
+
+.log_in_path{
+	font-size: 30px;
+}
+
+.user-image{
+	border-radius: 50%;
+}
+
+.user-left{
+	margin: auto;
+	text-align: center;
+}
+
+.user-edit{
+	margin-top: 20px;
+}
+
+.search-box{
+	margin-bottom: 30px;
+}
