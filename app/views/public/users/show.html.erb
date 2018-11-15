@@ -4,7 +4,17 @@
 <div class ="user-info">
 
 <h2>ユーザー情報</h2>
-<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: "jpg", fallback:"no_image.jpg" %>
+<div class="row">
+  <div class="col-xs-4">
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: "jpg", fallback:"no_image.jpg", class:"user-image user-left" %>
+  <div class="user-edit">
+   <% if @user.id == current_user.id %>
+     <%= link_to "編集", edit_user_path(@user), class:"btn btn-default glyphicon glyphicon-wrench user-left" %>
+   <% end %>
+ </div>
+
+</div>
+<div class="col-xs-8">
 <table class="table">
 	<tbody>
 	<tr></tr>
@@ -19,12 +29,10 @@
 </tr>
 </tbody>
 </table>
-<div class="row">
-   <% if @user.id == current_user.id %>
-     <%= link_to "編集", edit_user_path(@user), class:" btn btn-default glyphicon glyphicon-wrench" %>
-   <% end %>
-</div>
 
+</div>
+</div>
+<div class="row">
 <h3>都道府県の数<%= @went.prefecture_count %>/47</h3>
 
 <% @went_places.each do |place| %>
@@ -38,7 +46,7 @@
       </div>
           <% end %>
 
-
+</div>
 </div>
 </div>
 </div>

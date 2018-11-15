@@ -3,7 +3,9 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="row">
-	              <%= attachment_image_tag @comment, :comment_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
+				<% @comment.comment_images.each do |image| %>
+	              <%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
+	              <% end %>
 	        </div>
 
 	        <p>

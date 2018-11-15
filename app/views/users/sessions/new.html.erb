@@ -1,26 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="sign">
 <h2>ログイン</h2>
-
+<div class="row">
+  <div class="col-xs-6">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :パスワード %><br />
+    <%= f.password_field :password, autocomplete: "current-password", :placeholder =>"パスワード" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :ログイン情報の記憶 %>
     </div>
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン", class:"btn btn-primary " %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>
+      <%= link_to "パスワードを忘れたらこちら", new_password_path(resource_name) %>
+</div>
+<div class="col-xs-6">
+      <%= link_to "新規登録", new_registration_path(resource_name), class:"btn btn-default registration_path" %><br>
+</div>
+</div>
+</div>
+</div>

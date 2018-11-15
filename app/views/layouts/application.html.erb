@@ -20,23 +20,35 @@
                   <div class="container">
         <div class="row">
           <nav class="nav navbar-nav navbar-left">
-            <%= link_to "root",root_path,  class:"header_logo" %>
+            <%= link_to "つあーず",root_path,  class:"header_logo" %>
           </nav>
-        
            <nav class="header_nav nav-list">
              <ul class="nav navbar-nav navbar-right">
                <% if admin_signed_in? %>
                   <li>
                    <%=link_to "ログアウト",destroy_admin_session_path, method: :delete %>
+                 </li>
+                 <li>
                    <%= link_to "観光地一覧",admin_place_path %>
-
                   </li>
                     <% elsif user_signed_in? %>
-                      <%= link_to"ログイン", new_user_session_path %>
+                    <li>
                       <%=link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                    </li>
+                    <nav class="header_nav nav-list">
+                      <ul class="nav navbar-nav navbar-right">
+                        <li>
+                          ようこそ<%= current_user.name %>さん
+                        </li>
+                      </ul>
+                    </nav>
                     <% else %>
+                    <li>
                       <%= link_to"新規登録", new_user_registration_path %>
+                    </li>
+                    <li>
                       <%= link_to"ログイン", new_user_session_path %>
+                    </li>
                     <% end %>
                 </ul>
               </nav>
