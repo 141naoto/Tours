@@ -1,4 +1,4 @@
-class HashtagComment < ApplicationRecord
+class CommentsHashtag < ApplicationRecord
 	belongs_to :hashtag
 	belongs_to :comment
 	validates :comment_id, presence: true

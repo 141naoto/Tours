@@ -21,6 +21,12 @@ class Public::CommentsController < ApplicationController
 		@comment = Comment.find(params[:id])
 	end
 
+	def hashtag
+		@user = current_user
+		@tag = Hashtag.find_by(name: params[:name])
+		@comments = @tag.comments.all
+	end
+
   private
 	def comment_params
 		params.require(:comment).permit(:user_id, :place_id, :season_id, :organization_id, :text, :title, comment_images_images: [])

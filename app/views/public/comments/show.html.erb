@@ -12,7 +12,7 @@
 	        	<%= @comment.title %>
 	        </p>
 	        <p>
-	        	<%= @comment.text %>
+	        	<%= render_with_hashtags(@comment.text) %>
 	        </p>
 	        <p>
 		        <strong>季節:</strong>
