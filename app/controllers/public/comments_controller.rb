@@ -24,7 +24,7 @@ class Public::CommentsController < ApplicationController
 	def hashtag
 		@user = current_user
 		@tag = Hashtag.find_by(name: params[:name])
-		@comments = @tag.comments.all
+		@comments = @tag.comments.all 
 	end
 
   private
