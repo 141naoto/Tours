@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-	geocoded_by :address
+	geocoded_by :place_name
     after_validation :geocode, if: :address_changed?
 
 	attachment :place_image

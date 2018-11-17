@@ -20,7 +20,7 @@
                   <div class="container">
         <div class="row">
           <nav class="nav navbar-nav navbar-left">
-            <%= link_to "つあーず",root_path,  class:"header_logo" %>
+            <%= link_to "Tours",root_path,  class:"header_logo" %>
           </nav>
            <nav class="header_nav nav-list">
              <ul class="nav navbar-nav navbar-right">
@@ -29,7 +29,7 @@
                    <%=link_to "ログアウト",destroy_admin_session_path, method: :delete %>
                  </li>
                  <li>
-                   <%= link_to "観光地一覧",admin_place_path %>
+                   <%= link_to "観光地一覧",admin_places_path %>
                   </li>
                     <% elsif user_signed_in? %>
                     <li>
