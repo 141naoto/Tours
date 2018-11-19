@@ -1,28 +1,32 @@
 <div class="body">
-<div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="row">
-				<% @comment.comment_images.each do |image| %>
-	              <%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
-	              <% end %>
-	        </div>
+	<div class="container">
+		<div class="row">
+			<h2><%= link_to place_path(@comment.place_id) do %>
+				<%= @comment.place.place_name %><% end %></h2>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row">
+					<% @comment.comment_images.each do |image| %>
+					<div class="col-xs-4">
+		              <%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
+		              <% end %>
+		          	</div>
+		        </div>
 
-	        <p>
-	        	<%= @comment.title %>
-	        </p>
-	        <p>
-	        	<%= render_with_hashtags(@comment.text) %>
-	        </p>
-	        <p>
-		        <strong>季節:</strong>
-		        <%= @comment.season.season %>
-	        </p>
-	        <p>
-	        	<strong>人数</strong>
-	        	<%= @comment.organization.organization %>
-	        </p>
-	    </div>
+		        <p>
+		        	<%= @comment.title %>
+		        </p>
+		        <p>
+		        	<%= render_with_hashtags(@comment.text) %>
+		        </p>
+		        <p>
+			        <strong>季節:</strong>
+			        <%= @comment.season.season %>
+		        </p>
+		        <p>
+		        	<strong>人数</strong>
+		        	<%= @comment.organization.organization %>
+		        </p>
+		    </div>
+		</div>
 	</div>
-</div>
 </div>

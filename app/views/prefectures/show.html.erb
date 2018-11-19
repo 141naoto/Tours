@@ -1,13 +1,15 @@
 <div class="body">
-<div class="container">
-	<div class="row">
-		 <h2><%= @prefecture.prefecture %></h2>
-		 <% @prefecture.places.each do |place| %>
-		 <%= link_to place_path(place.id) do %>
-		  <%= place.place_name %>
-		  <%= attachment_image_tag place, :place_image, :fill, 60, 60, format: "jpg", fallback:"no_image.jpg" %>
-		  <% end %>
-		<% end %>
+	<div class="container">
+		<div class="row">
+			 <h2><%= @prefecture.prefecture %></h2>
+			 <% @prefecture.places.each do |place| %>
+			 	<div class="col-xs-4">
+					<%= link_to place_show_count_path(place) do %>
+						<%= place.place_name %>
+							<%= attachment_image_tag place, :place_image, :fill, 300, 200, format: "jpg", fallback:"no_image.jpg" %>
+					<% end %>
+			  	</div>
+			<% end %>
+		</div>
 	</div>
-</div>
 </div>

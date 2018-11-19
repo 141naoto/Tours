@@ -1,16 +1,20 @@
 <div class="body">
-<div class="container">
-	<div class="row">
-		<h2><%= @region.region_name %></h2>
-		 <% @region.prefectures.each do |prefecture| %>
-		  <h3><%= prefecture.prefecture %></h3>
-		  <% prefecture.places.each do |place| %>
-		  <%= link_to place_path(place.id) do %>
-		  <%= place.place_name %>
-		  <p><%= attachment_image_tag place, :place_image, :fill, 60, 60, format: "jpg", fallback:"no_image.jpg" %></p>
-		  <% end %>
-		 <% end %>
-		 <% end %>
+	<div class="container">
+		<div class="row">
+			<h2><%= @region.region_name %></h2>
+			<% @region.prefectures.each do |prefecture| %>
+				<h3><%= prefecture.prefecture %></h3>
+				<div class="row">
+					<% prefecture.places.each do |place| %>
+						<div class="col-xs-4">
+							<%= link_to place_show_count_path(place) do %>
+								<%= place.place_name %>
+									<p><%= attachment_image_tag place, :place_image, :fill, 300, 200, format: "jpg", fallback:"no_image.jpg" %></p>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
 	</div>
-</div>
 </div>

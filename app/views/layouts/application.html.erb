@@ -16,25 +16,43 @@
   </head>
 
   <body>
-      <header class="navbar navbar-top">
-                  <div class="container">
+    <header class="navbar navbar-top">
+      <div class="container">
         <div class="row">
           <nav class="nav navbar-nav navbar-left">
             <%= link_to "Tours",root_path,  class:"header_logo" %>
           </nav>
-           <nav class="header_nav nav-list">
-             <ul class="nav navbar-nav navbar-right">
-               <% if admin_signed_in? %>
-                  <li>
-                   <%=link_to "ログアウト",destroy_admin_session_path, method: :delete %>
-                 </li>
-                 <li>
-                   <%= link_to "観光地一覧",admin_places_path %>
-                  </li>
-                    <% elsif user_signed_in? %>
-                    <li>
-                      <%=link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                    </li>
+          <nav class="header_nav nav-list">
+            <ul class="nav navbar-nav navbar-right">
+              <% if admin_signed_in? %>
+                <li>
+                  <%=link_to "ログアウト",destroy_admin_session_path, class:"glyphicon glyphicon-log-out", method: :delete %>
+                </li>
+                <li>
+                  <%= link_to "観光地一覧",admin_places_path %>
+                </li>
+              <% elsif user_signed_in? %>
+                <li>
+                  <div class="head">
+                      <%= link_to "",user_path(current_user), class:"glyphicon glyphicon-user aria-hidden=true" %>
+                  </div>
+                  <p>マイページ</p>
+                </li>
+                <li>
+                  <div class="head">
+                    <%= link_to "", goes_path, class:"glyphicon glyphicon-star aria-hidden=true" %>
+                  </div>
+                  <p>行きたい</p>
+                </li>
+                <li>
+                  <div class="head">
+                    <%= link_to "", search_path, class:"glyphicon glyphicon-search aria-hidden=true" %>
+                  </div>
+                  <p>検索</p>
+                </li>
+                <li>
+                  <%=link_to "　ログアウト", destroy_user_session_path, class:"glyphicon glyphicon-log-in", method: :delete %>
+                </li>
                     <nav class="header_nav nav-list">
                       <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -42,72 +60,48 @@
                         </li>
                       </ul>
                     </nav>
-                    <% else %>
-                    <li>
-                      <%= link_to"新規登録", new_user_registration_path %>
-                    </li>
-                    <li>
-                      <%= link_to"ログイン", new_user_session_path %>
-                    </li>
-                    <% end %>
-                </ul>
-              </nav>
-              </div>
-      </div>
-            </header>
-
-    <%= yield %>
-    <footer class="navbar navbar-default navbar-fixed-bottom" style="background-color: #FFFF66;">
-     <div class="container">
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-          <div class="nav navbar-nav nav-list bottom">
-            <ul class="nav navbar-nav bottom">
-              <% if user_signed_in? %>
-                 <li>
-                 <div class="foot">
-                  <%= link_to "",user_path(current_user), class:"glyphicon glyphicon-user aria-hidden=true" %>
-                  </div>
-                   <p>マイページ</p>
-                </li>
-                 <li>
-                 <div class="foot">
-                  <%= link_to "", goes_path, class:"glyphicon glyphicon-star aria-hidden=true" %>
-                  </div>
-                  <p>行きたい</p>
-                </li>
-                 <li>
-                 <div class="foot">
-                  <%= link_to "", search_path, class:"glyphicon glyphicon-search aria-hidden=true" %>
-                  </div>
-                  <p>検索</p>
-                </li>
               <% else %>
-                 <li>
-                 <div class="foot">
-                  <%= link_to "", new_user_session_path, class:"glyphicon glyphicon-user aria-hidden=true" %>
+                <li>
+                  <div class="head">
+                     <%= link_to "", new_user_session_path, class:"glyphicon glyphicon-user aria-hidden=true" %>
                   </div>
                   <p>マイページ</p>
                 </li>
-                 <li>
-                 <div class="foot">
-                  <%= link_to "", new_user_session_path, class:"glyphicon glyphicon-star aria-hidden=true" %>
+                <li>
+                  <div class="head">
+                    <%= link_to "", goes_path, class:"glyphicon glyphicon-star aria-hidden=true" %>
                   </div>
                   <p>行きたい</p>
                 </li>
-                 <li>
-                 <div class="foot">
-                  <%= link_to "", search_path, class:"glyphicon glyphicon-search aria-hidden=true" %>
+                <li>
+                  <div class="head">
+                    <%= link_to "", search_path, class:"glyphicon glyphicon-search aria-hidden=true" %>
                   </div>
                   <p>検索</p>
                 </li>
+                <li>
+                  <%= link_to"新規登録", new_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to"ログイン", new_user_session_path %>
+                </li>
               <% end %>
             </ul>
-            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <div class="container">
+            <%= value %>
           </div>
         </div>
-       </div>
-     </div>
+      <% end %>
+      <%= yield %>
+    </main>
+    <footer>
     </footer>
   </body>
 </html>

@@ -1,76 +1,77 @@
-	<div class="body">
-	 <div class="container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<% if user_signed_in? %>
-				<%= link_to "口コミ投稿", new_place_comment_path(@place) %>
-				<%= link_to "行った", place_went_prefectures_path(@place), method: :post %>
-				<% else %>
-				<%= link_to "口コミ投稿", new_user_session_path %>
-				<%= link_to "行った", new_user_session_path %>
-				<% end %>
+<div class="body">
+ <div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<%= link_to "口コミ投稿", new_place_comment_path(@place), class:"place-comment" %>
+          	<% if current_user %>
+          		<% if @place.favorited_by?(current_user) %>
+          			<%= link_to place_goes_path(@place), method: :delete, class: "glyphicon btn btn-danger" do %>
+          				<span class="glyphicon-star">行きたい</span>
+          			<% end %>
+          		<% else %>
+          			<%= link_to place_goes_path(@place), method: :post, class: "glyphicon btn btn-default" do %>
+          				<span class="glyphicon-star-empty">行きたい</span>
+          			<% end %>
+          		<% end %>
+          	<% end %>
+          	<%= link_to "行った", place_went_prefectures_path(@place), class:"glyphicon glyphicon-pushpin went", method: :post %>
 
-	          <p>
-				<strong>名前:</strong>
-				<%= @place.place_name %>
-			  </p>
-			  <div class="row">
-	              <%= attachment_image_tag @place, :place_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
-	           </div>
-	         <div class="container">
-	             <div class="row">
-	             	<p>
-	          	<strong>閲覧数:</strong>
-	          	<%= @place.show_count %>
-	          </p>
-	          <p>
-	          <p>
-	           <strong>営業時間:</strong>
-	           <%= @place.hours %>
-	          </p>
-	          <p>
-	           <strong>紹介:</strong>
-	           <%= @place.place_introduction %>
-	          </p>
-	          <p>
-	          <% if current_user %>
-	          <% if @place.favorited_by?(current_user) %>
-              <%= link_to place_goes_path(@place), method: :delete, class: "glyphicon btn btn-danger" do %>
-              <span class="glyphicon-star"></span>
-              <% end %>
-              <% else %>
-              <%= link_to place_goes_path(@place), method: :post, class: "glyphicon btn btn-default" do %>
-              <span class="glyphicon-star-empty"></span>
-              <% end %>
-              <% end %>
-              <% end %>
-        </p>
-	          <p>
-	           <strong>住所:</strong>
-	           <%= @place.address %>
-	          </p>
-	      </div>
-	  </div>
-	          <div id="map" style="width: 500px; height: 300px;"></div>
-	           <script>
-	             handler = Gmaps.build('Google');
-	             handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-					 markers = handler.addMarkers(<%= raw @hash.to_json %>);
-					 handler.bounds.extendWith(markers);
-					 handler.fitMapToBounds();
-					 handler.getMap().setZoom(12);
-	             });
-	           </script>
-	           <% @comments.each do |comment| %>
-		       <div class="comments-title">
-		       	<%= link_to place_comment_path(@place, comment) do %>
-		       	<%= comment.title %>
-		       	<% end %>
-		       	<div class="comments-text">
-		       	<%= comment.text %>
-		       </div>
-		       	<% end %>
-		       </div>
-		   </div>
-		</div>
+          <p>
+			<strong>名前:</strong>
+			<%= @place.place_name %>
+		  </p>
+		  <div class="row">
+              <%= attachment_image_tag @place, :place_image, :fill, 500, 200, format:"jpg", fallback:"no_image.jpg" %>
+           </div>
+
+             <div class="row">
+             	<p>
+          			<strong class="glyphicon glyphicon-eye-open">閲覧数:</strong>
+          			<%= @place.show_count %>
+          		</p>
+          		<p>
+           			<strong>営業時間:</strong>
+           			<%= @place.hours %>
+          		</p>
+          		<p>
+           			<strong>紹介:</strong>
+           			<div class="place_introduction">
+           				<%= @place.place_introduction %>
+       				</div>
+          		</p>
+          		<p>
+           			<strong>住所:</strong>
+           			<%= @place.address %>
+          		</p>
+      		</div>
+
+          <div id="map" style="width: 500px; height: 300px;"></div>
+           	<script>
+             	handler = Gmaps.build('Google');
+             	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+				 	markers = handler.addMarkers(<%= raw @hash.to_json %>);
+				 	handler.bounds.extendWith(markers);
+				 	handler.fitMapToBounds();
+				 	handler.getMap().setZoom(12);
+             	});
+           	</script>
+
+           <h3>口コミ
+           	   <%= link_to place_comment_index_path(@place) do %>
+           	   	(<%= @place_comments.count %>件)
+           	   <% end %>
+           	</h3>
+           <% @comments.each do |comment| %>
+	       	<div class="comments-title">
+	       		<%= link_to place_comment_path(@place, comment) do %>
+	       			<%= comment.title %>
+	       		<% end %>
+	       	</div>
+	       	<div class="comments-text balloon1-top">
+	       		<%= render_with_hashtags(comment.text) %>
+	        </div>
+	       <% end %>
+	       </div>
+	   </div>
 	</div>
+</div>
