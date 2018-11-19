@@ -1,9 +1,12 @@
 class Public::GoesController < ApplicationController
+    before_action :authenticate_user!
 	def index
 	    @usergos = current_user.gos
         if @usergos.count > 0
            places = @usergos.pluck(:place_id)
-           @goplaces = Place.where(id: places).order(prefecture_id: "DESC")
+           @goplaces = Place.where(id: places).order(prefecture_id: "ASC")
+           prefectures = @goplaces.pluck(:prefecture_id)
+           @goprefectures = Prefecture.where(id: prefectures)
         else redirect_to root_path
         end
     end

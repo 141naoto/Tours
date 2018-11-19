@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+	before_action :authenticate_user!
 	def new
 		@comment = Comment.new
 		@comment.comment_images.build
@@ -24,7 +25,12 @@ class Public::CommentsController < ApplicationController
 	def hashtag
 		@user = current_user
 		@tag = Hashtag.find_by(name: params[:name])
-		@comments = @tag.comments.all 
+		@comments = @tag.comments.all
+	end
+
+	def comment_index
+		@place = Place.find(params[:place_id])
+		@place_comments = @place.comments
 	end
 
   private

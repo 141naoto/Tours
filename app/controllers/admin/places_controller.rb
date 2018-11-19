@@ -1,4 +1,6 @@
 class Admin::PlacesController < ApplicationController
+	before_action :authenticate_admin!
+
 	def new
 		@place = Place.new
 	end

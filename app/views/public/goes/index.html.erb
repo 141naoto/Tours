@@ -1,19 +1,20 @@
 <div class="body">
-<div class="container">
-	<div class="row">
-		<div class="container">
+	<h2>行きたい一覧</h2>
+	<div class="container">
+		<div class="row">
 			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-		<% @goplaces.each do |place| %>
-		 <%= link_to place_path(place.id) do %>
-		   <%= attachment_image_tag place, :place_image %>
-		 <% end %>
+				<% @goplaces.each do |place| %>
+					<div class="col-xs-4">
+						<div class="go">
+							<p><%= place.prefecture.prefecture %></p>
+								<h4><%= truncate(place.place_name, length:20) %></h4>
+							<%= link_to place_path(place.id) do %>
+								<%= attachment_image_tag place, :place_image, :fill, 400, 200 %>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
-
-		 <%= truncate(place.place_name, length:20) %>
-		<% end %>
-	</div>
-</div>
 </div>

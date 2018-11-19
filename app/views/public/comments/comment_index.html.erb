@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
-				<% @comments.each do |comment| %>
+				<% @place_comments.each do |comment| %>
 	    			<div class="hash-comment">
 	    				<h2><%= link_to place_path(comment.place_id) do %>
 							<%= comment.place.place_name %><% end %></h2>

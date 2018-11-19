@@ -7,6 +7,7 @@ class Public::PlacesController < ApplicationController
           marker.infowindow place.address
         end
         @comments = @place.comments.order(created_at: "DESC").limit(3)
+        @place_comments = @place.comments
     end
 
     def show_count
