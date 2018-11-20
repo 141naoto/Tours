@@ -70,6 +70,9 @@
 	       	<div class="comments-text balloon1-top">
 	       		<%= render_with_hashtags(comment.text) %>
 	        </div>
+            by<%= link_to user_path(comment) do %>
+              <%= comment.user.name %>
+            <% end %>さん
 	       <% end %>
 	       </div>
 	   </div>
