@@ -2,7 +2,7 @@
  <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<%= link_to "口コミ投稿", new_place_comment_path(@place), class:"place-comment" %>
+			<%= link_to "口コミ投稿", new_place_comment_path(@place), class:"place-comment btn btn-default" %>
           	<% if current_user %>
           		<% if @place.favorited_by?(current_user) %>
           			<%= link_to place_goes_path(@place), method: :delete, class: "glyphicon btn btn-danger" do %>
@@ -21,7 +21,7 @@
 			<%= @place.place_name %>
 		  </p>
 		  <div class="row">
-              <%= attachment_image_tag @place, :place_image, :fill, 500, 200, format:"jpg", fallback:"no_image.jpg" %>
+              <%= attachment_image_tag @place, :place_image, :fill, 600, 400, format:"jpg", fallback:"no_image.jpg" %>
            </div>
 
              <div class="row">

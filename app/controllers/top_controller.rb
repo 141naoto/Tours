@@ -11,7 +11,7 @@ class TopController < ApplicationController
 	end
 
 	def search
-		@random_place = Place.where( 'id >= ?', rand(Place.first.id..Place.last.id) ).firsts
+		@random_place = Place.where( 'id >= ?', rand(Place.first.id..Place.last.id) ).first
 		@regions = Region.all
 		@prefectures = Prefecture.all
 		@comments = Comment.all

@@ -14,7 +14,9 @@ class Public::CommentsController < ApplicationController
 		if @comment.save
 		   redirect_to place_path(@place.id)
 	    else
-	    	render 'new'
+			@season = Season.all
+			@organization = Organization.all
+	    	render 'public/comments/new'
 	    end
 	end
 
