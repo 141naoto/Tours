@@ -468,13 +468,13 @@ width: 150px;
 .record-title input[type='text']:focus {
   outline: none;
 }
-.ef {
+.ab {
   padding: 4px 0;
   border: 0;
   border-bottom: 1px solid #1b2538;
   background-color: transparent;
 }
-.ef ~ .title-focus-line {
+.ab ~ .title-focus-line {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -483,12 +483,12 @@ width: 150px;
   transition: 0.4s;
   background-color: #da3c41;
 }
-.ef:focus ~ .title-focus-line,
-.record-title.ef ~ .title-focus-line {
+.ab:focus ~ .title-focus-line,
+.record-title.ab ~ .title-focus-line {
   width: 100%;
   transition: 0.4s;
 }
-.ef ~ label {
+.ab ~ label {
   position: absolute;
   z-index: -1;
   top: 4px;
@@ -498,7 +498,7 @@ width: 150px;
   letter-spacing: 0.5px;
   color: #aaaaaa;
 }
-.ef:focus ~ label, .record-title.ef ~ label {
+.ab:focus ~ label, .record-title.ab ~ label {
   font-size: 12px;
   top: -16px;
   transition: 0.3s;
@@ -520,13 +520,13 @@ width: 150px;
 .record-text textarea:focus {
   outline: none;
 }
-.gh {
+.cd {
   padding: 4px 0;
   border: 0;
   border-bottom: 1px solid #1b2538;
   background-color: transparent;
 }
-.gh ~ .focus_line {
+.cd ~ .focus_line {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -535,12 +535,12 @@ width: 150px;
   transition: 0.4s;
   background-color: #da3c41;
 }
-.gh:focus ~ .focus_line,
-.record-text.gh ~ .focus_line {
+.cd:focus ~ .focus_line,
+.record-text.cd ~ .focus_line {
   width: 100%;
   transition: 0.4s;
 }
-.gh ~ label {
+.cd ~ label {
   position: absolute;
   z-index: -1;
   top: 4px;
@@ -550,7 +550,7 @@ width: 150px;
   letter-spacing: 0.5px;
   color: #aaaaaa;
 }
-.gh:focus ~ label, .record-text.gh ~ label {
+.cd:focus ~ label, .record-text.cd ~ label {
   font-size: 12px;
   top: -16px;
   transition: 0.3s;
