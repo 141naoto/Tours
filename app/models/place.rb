@@ -1,13 +1,13 @@
 class Place < ApplicationRecord
 	geocoded_by :place_name
-    after_validation :geocode, if: :address_changed?
+    after_validation :geocode, if: :place_name_changed?
 
 	attachment :place_image
 
 	belongs_to :prefecture
 	has_many :gos, dependent: :destroy
 	has_many :comments, dependent: :destroy
-	has_many :went_prefectures
+	has_many :went_prefectures, dependent: :destroy
 
 	def self.search(search)
 		if search
@@ -21,5 +21,4 @@ class Place < ApplicationRecord
           gos.where(user_id: user.id).exists?
     end
 
-    
 end

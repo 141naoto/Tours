@@ -1,7 +1,32 @@
 <div class="body">
 <h2>観光地一覧</h2>
 <%= link_to "登録", new_admin_place_path, class:"btn btn-danger col-xs-12" %>
-
+<h3>ユーザーが追加した観光地一覧</h3>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>名前</th>
+			<th>住所</th>
+			<th colspan='2'></th>
+		</tr>
+	</thead>
+	<% @true_places.each do |t| %>
+	<tbody>
+		<tr>
+			<td><%= t.id %></td>
+			<td><%= t.place_name %></td>
+			<td><%= t.address %></td>
+			<td>
+				<%= link_to "詳細", admin_place_path(t), class:"btn-sm btn-success" %>
+				<%= link_to "削除", admin_place_path(t), method: :delete, data: {confirm: "削除しますか?" }, class:"btn-sm btn-danger" %>
+			</td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+</div>
+<h3>観光地一覧</h3>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -12,15 +37,15 @@
 		</tr>
 	</thead>
 
-	<% @places.each do |place| %>
+	<% @false_places.each do |f| %>
 	<tbody>
 		<tr>
-			<td><%= place.id %></td>
-			<td><%= place.place_name %></td>
-			<td><%= place.address %></td>
+			<td><%= f.id %></td>
+			<td><%= f.place_name %></td>
+			<td><%= f.address %></td>
 			<td>
-				<%= link_to "詳細", admin_place_path(place), class:"btn-sm btn-success" %>
-				<%= link_to "削除", admin_place_path(place), method: :delete, data: {confirm: "削除しますか?" }, class:"btn-sm btn-danger" %>
+				<%= link_to "詳細", admin_place_path(f), class:"btn-sm btn-success" %>
+				<%= link_to "削除", admin_place_path(f), method: :delete, data: {confirm: "削除しますか?" }, class:"btn-sm btn-danger" %>
 			</td>
 		</tr>
 	</tbody>

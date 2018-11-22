@@ -33,22 +33,36 @@
                 </li>
               <% elsif user_signed_in? %>
                 <li>
+                  <%= link_to user_path(current_user) do %>
                   <div class="head">
-                      <%= link_to "",user_path(current_user), class:"glyphicon glyphicon-user aria-hidden=true" %>
+                      <p class="glyphicon glyphicon-user aria-hidden=true"></p>
                   </div>
                   <p>マイページ</p>
+                  <% end %>
                 </li>
                 <li>
+                  <%= link_to goes_path do %>
                   <div class="head">
-                    <%= link_to "", goes_path, class:"glyphicon glyphicon-star aria-hidden=true" %>
+                    <p class="glyphicon glyphicon-star aria-hidden=true"></p>
                   </div>
                   <p>行きたい</p>
+                  <% end %>
                 </li>
                 <li>
+                  <%= link_to new_record_path do %>
                   <div class="head">
-                    <%= link_to "", search_path, class:"glyphicon glyphicon-search aria-hidden=true" %>
+                    <p class="glyphicon glyphicon-plus"></p>
+                  </div>
+                  <p>新規投稿</p>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to search_path do %>
+                  <div class="head">
+                     <p class="glyphicon glyphicon-search aria-hidden=true"></p>
                   </div>
                   <p>検索</p>
+                  <% end %>
                 </li>
                 <li>
                   <%=link_to "　ログアウト", destroy_user_session_path, class:"glyphicon glyphicon-log-in", method: :delete %>
@@ -62,22 +76,36 @@
                     </nav>
               <% else %>
                 <li>
+                  <%= link_to new_user_session_path do %>
                   <div class="head">
-                     <%= link_to "", new_user_session_path, class:"glyphicon glyphicon-user aria-hidden=true" %>
+                     <p class="glyphicon glyphicon-user aria-hidden=true"></p>
                   </div>
                   <p>マイページ</p>
+                  <% end %>
                 </li>
                 <li>
+                  <%= link_to goes_path do %>
                   <div class="head">
-                    <%= link_to "", goes_path, class:"glyphicon glyphicon-star aria-hidden=true" %>
+                    <p class="glyphicon glyphicon-star aria-hidden=true"></p>
                   </div>
                   <p>行きたい</p>
+                  <% end %>
                 </li>
                 <li>
+                  <%= link_to new_record_path do %>
                   <div class="head">
-                    <%= link_to "", search_path, class:"glyphicon glyphicon-search aria-hidden=true" %>
+                    <p class="glyphicon glyphicon-plus"></p>
                   </div>
-                  <p>検索</p>
+                  <p>新規投稿</p>
+                  <% end %>
+                </li>
+                <li>
+                    <%= link_to search_path do %>
+                    <div class="head">
+                     <p class="glyphicon glyphicon-search aria-hidden=true"></p>
+                    </div>
+                    <p>検索</p>
+                    <% end %>
                 </li>
                 <li>
                   <%= link_to"新規登録", new_user_registration_path %>

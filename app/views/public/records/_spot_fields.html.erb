@@ -1,0 +1,15 @@
+<div class="nested-fields well well-compact">
+  <div class="form-group">
+  	    <div class="prefecture">
+    	<p>県名</p>
+       <%= f.select :prefecture_id, Prefecture.all.map{|u| [u.prefecture, u.id]}, include_blank: true %>
+   </div>
+
+    <p><%= f.label :名前 %></p>
+    <%= f.text_field :spot_name %><br>
+    <p><%= f.label :お気に入りの一枚 %></p>
+    <%= f.attachment_field :spot_image %><br>
+    <p><%= f.label :一言コメント %></p>
+    <%= f.text_field :spot_title %><br>
+    <%= link_to_remove_association "観光地名を削除", f %>
+  </div>

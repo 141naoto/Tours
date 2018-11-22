@@ -6,7 +6,8 @@ class Admin::PlacesController < ApplicationController
 	end
 
 	def index
-		@places = Place.all
+		@false_places = Place.where(place_flag: false)
+		@true_places = Place.where(place_flag: true)
 	end
 
     def show
@@ -31,6 +32,7 @@ class Admin::PlacesController < ApplicationController
 
 	def update
 		@place = Place.find(params[:id])
+		@place.place_flag = false
 		@place.update(place_params)
 		redirect_to admin_place_path(@place.id)
 	end
@@ -43,7 +45,7 @@ class Admin::PlacesController < ApplicationController
 
 	private
 	def place_params
-		params.require(:place).permit(:prefecture_id, :place_name, :place_image, :place_introduction, :show_count, :hours, :address, :latitude, :longitude, :show_count)
+		params.require(:place).permit(:prefecture_id, :place_name, :place_image, :place_introduction, :show_count, :hours, :address, :latitude, :longitude, :show_count, :place_flag)
 	end
 
 end

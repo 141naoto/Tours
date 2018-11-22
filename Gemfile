@@ -77,3 +77,5 @@ gem 'geocoder'
 gem 'gmaps4rails'
 
 gem 'bxslider-rails'
+
+gem 'cocoon'

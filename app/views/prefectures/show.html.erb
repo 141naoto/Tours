@@ -4,9 +4,9 @@
 			 <h2><%= @prefecture.prefecture %></h2>
 			 <% @prefecture.places.each do |place| %>
 			 	<div class="col-xs-4">
-					<%= link_to place_show_count_path(place) do %>
+					<%= link_to place_show_count_path(place), method: :patch do %>
 						<%= place.place_name %>
-							<%= attachment_image_tag place, :place_image, :fill, 300, 200, format: "jpg", fallback:"no_image.jpg" %>
+							<%= attachment_image_tag place, :place_image, :fill, 300, 200, format: "jpg", fallback:"no_image.jpg", size:'300x200' %>
 					<% end %>
 			  	</div>
 			<% end %>
