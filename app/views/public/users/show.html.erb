@@ -34,7 +34,7 @@
           <div class="row">
             <h3>訪れた都道府県の数　<%= @went.prefecture_count %>/47</h3>
             <h3>訪れた場所の数　<%= @went_places.count %>ヶ所</h3>
-            <h3><%= link_to "旅の記録", user_user_records_path(@user), class:"glyphicon glyphicon-send" %>
+            <h3><%= link_to "旅の記録", user_user_records_path(@user), class:"glyphicon glyphicon-send" %></h3>
 
             <% @went_places.each do |place| %>
             <div class="col-xs-4">

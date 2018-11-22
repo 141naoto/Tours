@@ -22,8 +22,11 @@ class Admin::PlacesController < ApplicationController
 	def create
 		@place = Place.new(place_params)
 		@place.show_count = 0
-		@place.save
-		redirect_to new_admin_place_path
+		if @place.save
+		   redirect_to new_admin_place_path
+		else
+			render 'new'
+		end
 	end
 
 	def edit

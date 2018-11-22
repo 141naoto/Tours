@@ -94,12 +94,12 @@ ActiveRecord::Schema.define(version: 2018_11_22_012604) do
     t.string "place_introduction"
     t.integer "show_count"
     t.string "hours"
+    t.boolean "place_flag", default: false, null: false
     t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "place_flag", default: false, null: false
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -112,9 +112,9 @@ ActiveRecord::Schema.define(version: 2018_11_22_012604) do
   create_table "records", force: :cascade do |t|
     t.string "record_title"
     t.string "record_text"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -134,9 +134,9 @@ ActiveRecord::Schema.define(version: 2018_11_22_012604) do
     t.string "spot_image_id"
     t.string "spot_name"
     t.string "spot_title"
+    t.integer "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prefecture_id"
     t.date "spot_date"
   end
 
