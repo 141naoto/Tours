@@ -9,7 +9,7 @@
 	    				<div class="row">
 							<% comment.comment_images.each do |image| %>
 								<div class="col-xs-4">
-	              					<%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg" %>
+	              					<%= attachment_image_tag image, :image, :fill, 300, 200, format:"jpg", fallback:"no_image.jpg" %>
 	              				</div>
 	              			<% end %>
 	        			</div>

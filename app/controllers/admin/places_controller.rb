@@ -36,14 +36,24 @@ class Admin::PlacesController < ApplicationController
 	def update
 		@place = Place.find(params[:id])
 		@place.place_flag = false
-		@place.update(place_params)
-		redirect_to admin_place_path(@place.id)
+		@spots = Spot.where(spot_name: @place.place_name)
+		if @place.update(place_params)
+           @spots.update(spot_name: @place.place_name)
+		   redirect_to admin_place_path(@place.id)
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
 		@place = Place.find(params[:id])
-		@place.destroy
-		redirect_to admin_places_path
+		@spots = Spot.where(spot_name: @place.place_name)
+		if @place.destroy
+			@spots.destroy_all
+			redirect_to admin_places_path
+		else
+			render 'index'
+		end
 	end
 
 	private

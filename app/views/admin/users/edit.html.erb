@@ -1,7 +1,6 @@
 <div class="body">
 	<div class="body" style="margin-left: 100px;">
-		<%= link_to "登録", new_admin_place_path, class:"btn btn-danger" %>
-		<%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-success" %>
+		<%= render 'admin/links' %>
 		<h2>編集</h2>
 		 <%= form_for(@user) do |f| %>
 			 <% if @user.errors.any? %>
