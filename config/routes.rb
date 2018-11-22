@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins, controllers: {
    sessions:      'admins/sessions',
    passwords:     'admins/passwords',
@@ -16,7 +17,10 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :show, :edit, :updae, :destroy]
   end
   scope module: :public do
-    resources :users, only:[:show, :edit, :update, :destroy]
+    resources :users, only:[:show, :edit, :update, :destroy] do
+          get "/user_records" => "records#user_records"
+    end
+    resources :records
   end
 
   resources :regions, only:[:show]

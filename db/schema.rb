@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_062412) do
+ActiveRecord::Schema.define(version: 2018_11_21_070643) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_062412) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "place_flag", default: false, null: false
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -106,6 +107,14 @@ ActiveRecord::Schema.define(version: 2018_11_15_062412) do
     t.string "prefecture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.string "record_title"
+    t.string "record_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -118,6 +127,16 @@ ActiveRecord::Schema.define(version: 2018_11_15_062412) do
     t.string "season"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.integer "record_id"
+    t.string "spot_image_id"
+    t.string "spot_name"
+    t.string "spot_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
   end
 
   create_table "users", force: :cascade do |t|

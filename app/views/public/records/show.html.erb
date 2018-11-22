@@ -1,0 +1,25 @@
+<div class="body">
+<h3><%= link_to user_path(@record) do %>
+		<%= @record.user.name %>
+    <% end %>
+    さんの旅の記録
+</h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<p>タイトル</p>
+				<%= @record.record_title %>
+				<p>感想</p>
+				<%= @record.record_text %>
+				<% @record.spots.each do |spot| %>
+					<p>場所</p>
+						<%= spot.spot_name %>
+					<p>一言感想</p>
+						<%= spot.spot_title %>
+					<p>お気に入りの一枚</p>
+						<%= attachment_image_tag spot, :spot_image, :fill, 400, 350, format:"jpg" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

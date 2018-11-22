@@ -19,4 +19,4 @@
 //= require underscore
 //= require gmaps/google
 //= require bxslider
-
+//= require cocoon

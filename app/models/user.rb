@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :gos, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :records, dependent: :destroy
   has_one :went, dependent: :destroy
 
   after_create:create_went
