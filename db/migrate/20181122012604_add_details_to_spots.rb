@@ -1,5 +1,5 @@
 class AddDetailsToSpots < ActiveRecord::Migration[5.2]
   def change
-    add_column :spots, :prefecture_id, :integer
+    add_column :spots, :spot_date, :date
   end
 end

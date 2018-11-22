@@ -49,7 +49,7 @@
 
 .head{
 	font-size: 30px;
-
+  text-align: center;
 }
 
 .bottom{
@@ -576,4 +576,47 @@ width: 150px;
 
 .record-submit:hover span {
   transform: rotateX(360deg);
+}
+
+.resord-title-show{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+.resord-title-show p {
+    margin: 0;
+    padding: 0;
+}
+
+.record-text-show {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+.record-text-show p {
+    margin: 0;
+    padding: 0;
+}
+
+.spot-title-show {
+    width: 50%;
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    color: #565656;
+    background: #ffeaea;
+    box-shadow: 0px 0px 0px 10px #ffeaea;
+    border: dashed 2px #ffc3c3;
+    border-radius: 8px;
+}
+.spot-title-show p {
+    margin: 0;
+    padding: 0;
+}
+
+.spot-name {
+ border-bottom: double 5px #FFC778;
+ font-size: 25px;
 }

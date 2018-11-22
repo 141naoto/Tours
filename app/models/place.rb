@@ -9,6 +9,8 @@ class Place < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :went_prefectures, dependent: :destroy
 
+	validates_uniqueness_of :place_name
+
 	def self.search(search)
 		if search
 			Place.where(['place_name Like?', "%#{search}%"])

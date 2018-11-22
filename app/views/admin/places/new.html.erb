@@ -2,8 +2,19 @@
 <h1>新規登録</h1>
 
 <%= link_to "観光地一覧", admin_places_path, class:"btn btn-primary" %>
+<%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-success" %>
 
 <%= form_for(@place, url: admin_places_path) do |f| %>
+	<% if @place.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= @place.errors.count %>件のエラーが発生しました。</h2>
+	    <ul>
+	      <% @place.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	   </div>
+	 <% end %>
 
     <div class="new-place">
     	<p>県名</p>

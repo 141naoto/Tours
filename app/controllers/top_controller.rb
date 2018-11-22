@@ -8,6 +8,12 @@ class TopController < ApplicationController
 		 image = CommentImage.where(comment_id: comment.id).first
 		 @comment_images << image
 	    end
+	    @records = Record.all.order(created_at: "DESC").limit(3)
+	    @spots = []
+	    @records.each do |record|
+	    	spot = Spot.where(record_id: record.id).first
+	    	@spots << spot
+	    end
 	end
 
 	def search

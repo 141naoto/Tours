@@ -11,20 +11,23 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
+							<th>投稿日</th>
 							<th>タイトル</th>
-							<th>コメント</th>
+							<th>感想</th>
 							<th clspan="2"></th>
 						</tr>
 					</thead>
 				<% @user.records.each do |record| %>
 					<tbody>
 						<tr>
+							<td><%= record.created_at.strftime('%Y/%m/%d') %>
+							</td>
 							<td><%= link_to record_path(record) do %>
-								<%= record.record_title %>
+								<%= truncate(record.record_title, length: 10) %>
 								<% end %>
 							</td>
 							<td>
-								<%= record.record_text %>
+								<%= truncate(record.record_text, length: 15) %>
 							</td>
 							<td><% if record.user_id == current_user.id %>
 								<%= link_to "削除", record_path(record), method: :delete, data: {confirm: "本当に削除しますか?" }, class:"btn-sm btn-danger" %>

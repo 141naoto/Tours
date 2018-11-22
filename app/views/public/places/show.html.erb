@@ -16,10 +16,10 @@
           	<% end %>
           	<%= link_to "行った", place_went_prefectures_path(@place), class:"glyphicon glyphicon-pushpin went", method: :post %>
 
-          <p>
+      <h3>
 			<strong>名前:</strong>
 			<%= @place.place_name %>
-		  </p>
+		  </h3>
 		  <div class="row">
               <%= attachment_image_tag @place, :place_image, :fill, 600, 400, format:"jpg", fallback:"no_image.jpg", size:'600x400' %>
            </div>

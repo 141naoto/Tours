@@ -1,6 +1,6 @@
 class Public::RecordsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user, only:[:edit, :update]
+  before_action :authenticate_user!, only:[:new, :create, :destroy]
+  before_action :correct_user, only:[:edit, :update, :destroy]
 
     def correct_user
       @user = User.find(params[:id])
@@ -43,6 +43,8 @@ class Public::RecordsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+
+
   def index
     @records = Record.all
   end
@@ -65,7 +67,7 @@ class Public::RecordsController < ApplicationController
 
   private
   def record_params
-    params.require(:record).permit(:record_title, :record_text, :user_id, spots_attributes: [:id, :prefecture_id, :spot_image, :spot_name, :spot_title, :_destroy] )
+    params.require(:record).permit(:record_title, :record_text, :user_id, spots_attributes: [:id, :prefecture_id, :spot_image, :spot_name, :spot_title, :spot_date, :_destroy] )
   end
 
 end
