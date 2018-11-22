@@ -7,6 +7,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.string :place_introduction
       t.integer :show_count
       t.string :hours
+      t.boolean :place_flag, default: false, null: false
       t.string :address
       t.float :latitude
       t.float :longitude

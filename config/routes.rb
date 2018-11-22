@@ -21,6 +21,8 @@ Rails.application.routes.draw do
           get "/user_records" => "records#user_records"
     end
     resources :records
+    get '/spot_place' => "spots#spot_place"
+    resources :spots, only:[:show]
   end
 
   resources :regions, only:[:show]
@@ -50,6 +52,8 @@ Rails.application.routes.draw do
   get "/goes" => "public/goes#index"
 
   get '/post/hashtag/:name' => "public/comments#hashtag"
+
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
