@@ -27,14 +27,14 @@
 			    <p>
 			    	<span>季節</span>
 			    	<% season.each do |season| %>
-			    	<%= radio_button 'comment','season_id', season.id, {include_hidden: false} %>
+			    	<%= radio_button 'comment','season', season.season, {include_hidden: false} %>
 			    	<%= season.season %>
 			    	<% end %>
 			    </p>
 			    <p>
 			    	<span>人数</span>
 			    	<% organization.each do |organization| %>
-			    	<%= radio_button 'comment','organization_id', organization.id %>
+			    	<%= radio_button 'comment','organization', organization.organization %>
 		           <%= organization.organization %>
 			    	<% end %>
 			    </p>

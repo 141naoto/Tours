@@ -47,12 +47,10 @@ class Admin::PlacesController < ApplicationController
 
 	def destroy
 		@place = Place.find(params[:id])
-		@spots = Spot.where(spot_name: @place.place_name)
 		if @place.destroy
-			@spots.destroy_all
-			redirect_to admin_places_path
+			redirect_to admin_places_path, success:"削除しました"
 		else
-			render 'index'
+			render 'index', danger:"削除に失敗しました"
 		end
 	end
 

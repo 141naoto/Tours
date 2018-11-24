@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_012604) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "place_id"
-    t.integer "season_id"
-    t.integer "organization_id"
+    t.string "season"
+    t.string "organization"
     t.string "text"
     t.string "title"
     t.datetime "created_at", null: false

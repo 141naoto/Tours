@@ -33,20 +33,24 @@
 						<div class="col-xs-4">
 							<div class="thumbnail">
 								<%= link_to place_show_count_path(show), method: :patch do %>
-									<%= attachment_image_tag show, :place_image, :fill, 400, 200, format:"jpg", size:'400x200' %>
+									<div class="top-image">
+										<%= attachment_image_tag show, :place_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", class:"top-image" %>
+									</div>
 									<%= show.place_name %>
 								<% end %>
 							</div>
 						</div>
 					<% end %>
 				</div>
-			<h3>新着口コミ</h3>
+			<h3>新着くちコミ</h3>
 				<div class="row">
 					<% @comment_images.each do|image| %>
 						<div class="col-xs-4">
 							<div class="thumbnail">
 								<%= link_to comment_path(image.comment.id) do %>
-									<%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", size:'400x200' %>
+									<div class="top-image">
+										<%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", fallback:"no_image.jpg", class:"top-image" %>
+									</div>
 									<%= image.comment.title %>
 								<% end %>
 							</div>
@@ -59,7 +63,9 @@
 						<div class="col-xs-4">
 							<div class="thumbnail">
 								<%= link_to record_path(spot.record.id) do %>
-									<%= attachment_image_tag spot, :spot_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", size:'300x200' %>
+									<div class="top-image">
+										<%= attachment_image_tag spot, :spot_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", class:"top-image" %>
+									</div>
 									<%= spot.record.record_title %>
 								<% end %>
 							</div>

@@ -1,8 +1,6 @@
 class Comment < ApplicationRecord
 	belongs_to :user
 	belongs_to :place
-  belongs_to :season
-  belongs_to :organization
 	has_many :comments_hashtags
 	has_many :likes
 	has_many :comment_images, dependent: :destroy
@@ -11,8 +9,6 @@ class Comment < ApplicationRecord
 	accepts_attachments_for :comment_images, attachment: :image
 
 	validates_presence_of :title
-  validates_presence_of :season
-  validates_presence_of :organization
 
 	  after_create do
     comment = Comment.find_by(id: self.id)
