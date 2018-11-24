@@ -10,7 +10,7 @@ class Comment < ApplicationRecord
 
 	validates_presence_of :title
 
-	  after_create do
+	 after_create do
     comment = Comment.find_by(id: self.id)
     hashtags  = self.text.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
