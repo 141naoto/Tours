@@ -1,6 +1,7 @@
 class CreatePlaces < ActiveRecord::Migration[5.2]
   def change
     create_table :places do |t|
+  # create_table :places, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.integer :prefecture_id
       t.string :place_name
       t.string :place_image_id

@@ -79,3 +79,7 @@ gem 'gmaps4rails'
 gem 'bxslider-rails'
 
 gem 'cocoon'
+
+#gem 'json'
+#gem 'mysql2'
+#gem 'listen', '>= 3.0.5', '< 3.2'
