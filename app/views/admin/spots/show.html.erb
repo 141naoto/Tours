@@ -22,7 +22,7 @@
 					</p>
 					<strong>お気に入りの一枚</strong>
 					<div class="spot-image">
-						<%= attachment_image_tag @spot, :spot_image, :fill, 500, 300, format:"jpg" %>
+						<%= attachment_image_tag @spot, :spot_image, :fill, 500, 300, format:"jpg", fallback:"/images/no_image.jpg", size:"500*300" %>
 					</div>
 				</div>
 			</div>

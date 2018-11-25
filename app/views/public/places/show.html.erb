@@ -21,7 +21,7 @@
 			<strong><%= @place.place_name %></strong>
 		  </h3>
 		  <div class="row">
-              <%= attachment_image_tag @place, :place_image, :fill, 600, 400, format:"jpg", fallback:"no_image.jpg", size:'600x400' %>
+              <%= attachment_image_tag @place, :place_image, :fill, 600, 400, format:"jpg", fallback:"/images/no_image.jpg", size:'600x400' %>
            </div>
 
              <div class="row">

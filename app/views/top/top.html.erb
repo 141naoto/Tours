@@ -34,7 +34,7 @@
 							<div class="thumbnail">
 								<%= link_to place_show_count_path(show), method: :patch do %>
 									<div class="top-image">
-										<%= attachment_image_tag show, :place_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", class:"top-image" %>
+										<%= attachment_image_tag show, :place_image, :fill, 400, 200, format:"jpg", fallback:"/images/no_image.jpg", class:"top-image" %>
 									</div>
 									<%= show.place_name %>
 								<% end %>
@@ -49,7 +49,7 @@
 							<div class="thumbnail">
 								<%= link_to comment_path(image.comment.id) do %>
 									<div class="top-image">
-										<%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", fallback:"no_image.jpg", class:"top-image" %>
+										<%= attachment_image_tag image, :image, :fill, 400, 200, format:"jpg", fallback:"/images/no_image.jpg", fallback:"no_image.jpg", class:"top-image" %>
 									</div>
 									<%= image.comment.title %>
 								<% end %>
@@ -64,7 +64,7 @@
 							<div class="thumbnail">
 								<%= link_to record_path(spot.record.id) do %>
 									<div class="top-image">
-										<%= attachment_image_tag spot, :spot_image, :fill, 400, 200, format:"jpg", fallback:"no_image.jpg", class:"top-image" %>
+										<%= attachment_image_tag spot, :spot_image, :fill, 400, 200, format:"jpg", fallback:"/images/no_image.jpg", class:"top-image" %>
 									</div>
 									<%= spot.record.record_title %>
 								<% end %>
