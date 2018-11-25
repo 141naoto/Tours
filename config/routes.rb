@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
   get "/search" => "top#search"
 
-  get "/goes" => "public/goes#index"
+  get "/goes" => "public/goes#goes_list"
 
   get '/post/hashtag/:name' => "public/comments#hashtag"
 

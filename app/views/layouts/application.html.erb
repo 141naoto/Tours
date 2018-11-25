@@ -70,7 +70,7 @@
                     <nav class="header_nav nav-list">
                       <ul class="nav navbar-nav navbar-right">
                         <li>
-                          ようこそ<%= current_user.name %>さん
+                          ようこそ<%= truncate(current_user.name, length: 10) %>さん
                         </li>
                       </ul>
                     </nav>

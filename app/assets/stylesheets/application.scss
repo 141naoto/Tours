@@ -115,6 +115,50 @@ footer{
 	text-align: center;
 }
 
+.went-places{
+  margin-top: 15px;
+}
+
+.tour-records {
+  position: relative;
+  display: block;
+  width: 300px;
+  padding: 0.8em;
+  text-align: center;
+  border: 3px solid blue;
+  text-decoration: none;
+  outline: none;
+  transition: all .4s;
+}
+.tour-records::before,
+.tour-records::after {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  bottom: -3px;
+  left: -3px;
+  z-index: 2;
+  content: '';
+  transition: all .4s;
+}
+.tour-records::before {
+  border-top: 3px solid #FF5722;
+  border-bottom: 3px solid #FF5722;
+  transform: scale(0, 1);
+}
+.tour-records::after {
+  border-right: 3px solid #FF5722;
+  border-left: 3px solid #FF5722;
+  transform: scale(1, 0);
+}
+.tour-records:hover {
+  color: #FF5722;
+}
+.tour-records:hover::after,
+.tour-records:hover::before {
+  transform: scale(1);
+}
+
 .edit-user{
 	margin-top: 20px;
 }
