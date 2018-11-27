@@ -21,9 +21,41 @@
 					</div>
 			    </p>
 			    <p>
+			    	<div class="row">
 			    	<span>画像</span>
-			    	<%= f.attachment_field :comment_images_images, multiple: true %>
+			    	<%= f.attachment_field :comment_images_images, multiple: true, id:"icon" %>
+						<output id="list"></output>
+			    	
+
+			    	<script>
+			    		 document.getElementById('icon').onchange = function(event){
+						    initializeFiles();
+
+						    var files = event.target.files;
+
+						    for (var i = 0, f; f = files[i]; i++) {
+						      var reader = new FileReader;
+						      reader.readAsDataURL(f);
+
+						      reader.onload = (function(theFile) {
+						        return function (e) {
+						          var div = document.createElement('div');
+						          div.className = 'reader_file';
+						          div.innerHTML = '<div class="reader_title">' + encodeURIComponent(theFile.name) + '</div>';
+						          div.innerHTML += '<img class="reader_image" src="' + e.target.result + '" />';
+						          document.getElementById('list').insertBefore(div, null);
+						        }
+						      })(f);
+						    }
+						  };
+
+						  function initializeFiles() {
+						    document.getElementById('list').innerHTML = '';
+						  }
+					</script>
 			    </p>
+			</div>
+			    <div class="clearfix">
 			    <p>
 			    	<span>季節</span>
 			    	<% season.each do |season| %>
@@ -47,6 +79,7 @@
 			    		<%= f.text_area :text, :placeholder => "#をつけて投稿してみよう" %>
 			    	</div>
 			    </p>
+			</div>
 			    <%= f.submit 'コメントを投稿', class:"comment-submit" %>
 		    <% end %>
 		</div>
