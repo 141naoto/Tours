@@ -2,7 +2,11 @@ class TopController < ApplicationController
 	def top
 		@favorites = Place.find(Go.group(:place_id).order('count(place_id) desc').limit(4).pluck(:place_id))
 		@show_ranking = Place.all.order(show_count: "DESC").limit(3)
-		@comments = Comment.joins('LEFT JOIN comment_images ON comments.id = comment_images.comment_id').where('comment_images.id IS NOT NULL').order(created_at: "DESC").limit(3)
+
+		a = Comment.arel_table
+		b = CommentImage.arel_table
+		condition = b[:comment_id].eq(a[:id])
+		@comments = Comment.where(CommentImage.where(condition).exists).order(created_at: "DESC").limit(3)
 		@comment_images = []
 		@comments.each do |comment|
 			if comment.comment_images.present?
