@@ -20,7 +20,7 @@
     </p>
     <p>
       <%= f.label :一言コメント %><br>
-      <%= f.text_field :spot_title, :placeholder => "30字でコメント!" %><br>
+      <%= f.text_field :spot_title, :placeholder => "30字でコメント!", :maxlength =>"30" %><br>
     </p>
     <%= link_to_remove_association "行った場所を削除", f %>
   </div>
