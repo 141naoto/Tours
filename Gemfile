@@ -63,22 +63,22 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-rails'
-
+#ログイン
 gem 'devise'
-
+#画像投稿
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-
+#cssフレームワーク
 gem 'bootstrap-sass'
-
+#javascriptライブラリ
 gem 'jquery-rails'
-
+#緯度経度取得
 gem 'geocoder'
-
+#googlemap
 gem 'gmaps4rails'
-
+#jqueryライブラリ　スライド
 gem 'bxslider-rails'
-
+#複数投稿
 gem 'cocoon'
 
 #gem 'json'

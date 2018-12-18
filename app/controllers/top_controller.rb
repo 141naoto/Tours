@@ -17,6 +17,7 @@ class TopController < ApplicationController
 					cnt +=1
 				end
 		end
+
 		@comment_images = []
 		@comments.each do |comment|
 			if comment.comment_images.present?
@@ -38,7 +39,6 @@ class TopController < ApplicationController
 		@regions = Region.all
 		@prefectures = Prefecture.all
 		@comments = Comment.all
-		@tags =Hashtag.find(CommentsHashtag.group(:hashtag_id).order('count(hashtag_id) desc').all.pluck(:hashtag_id))
 	end
 
 	def search_index

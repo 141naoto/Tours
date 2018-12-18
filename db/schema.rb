@@ -61,22 +61,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_012604) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "hashtag_comments", force: :cascade do |t|
-    t.integer "hashtag_id"
-    t.integer "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "hashtags", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

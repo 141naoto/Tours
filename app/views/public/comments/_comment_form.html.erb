@@ -25,7 +25,6 @@
 			    	<span>画像</span>
 			    	<%= f.attachment_field :comment_images_images, multiple: true, id:"icon" %>
 						<output id="list"></output>
-			    	
 
 			    	<script>
 			    		 document.getElementById('icon').onchange = function(event){
@@ -35,6 +34,7 @@
 
 						    for (var i = 0, f; f = files[i]; i++) {
 						      var reader = new FileReader;
+						      /*ファイルを、Data URIとして読み込む*/
 						      reader.readAsDataURL(f);
 
 						      reader.onload = (function(theFile) {
